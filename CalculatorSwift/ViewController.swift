@@ -9,6 +9,17 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+    @IBOutlet weak var display: UILabel!
+    var userIsInTheMiddleOfTyping = false
+    @IBAction func touchdigit(sender: UIButton) {
+        let digit = sender.currentTitle!
+        if(userIsInTheMiddleOfTyping){
+            let textInDisplay = display.text!
+            display.text = textInDisplay + digit
+        } else {
+            display.text = digit
+        }
+        userIsInTheMiddleOfTyping = true
+    }
 }
 
