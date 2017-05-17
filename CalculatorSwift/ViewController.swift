@@ -18,8 +18,19 @@ class ViewController: UIViewController {
             display.text = textInDisplay + digit
         } else {
             display.text = digit
+            userIsInTheMiddleOfTyping = true
         }
-        userIsInTheMiddleOfTyping = true
+    }
+    @IBAction func operationPressed(_ sender: UIButton) {
+        userIsInTheMiddleOfTyping = false
+        if let mathematicalSymbol = sender.currentTitle {
+            switch mathematicalSymbol {
+            case "∏":
+                display!.text = String(Double.pi)
+            default:
+                break
+            }
+        }
     }
 }
 
