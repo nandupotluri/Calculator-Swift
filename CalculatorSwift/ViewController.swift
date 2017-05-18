@@ -21,15 +21,29 @@ class ViewController: UIViewController {
             userIsInTheMiddleOfTyping = true
         }
     }
+    
+    var displayValue: Double {
+        get {
+            return Double(display.text!)!
+        }
+        set {
+            display.text = String(newValue)
+        }
+    }
+    
+    var brain: CalculatorBrain = CalculatorBrain()
+    
     @IBAction func operationPressed(_ sender: UIButton) {
-        userIsInTheMiddleOfTyping = false
+        if userIsInTheMiddleOfTyping {
+            brain.setOperand(displayValue)
+            userIsInTheMiddleOfTyping = false
+        }
+        
         if let mathematicalSymbol = sender.currentTitle {
-            switch mathematicalSymbol {
-            case "∏":
-                display!.text = String(Double.pi)
-            default:
-                break
-            }
+            brain.performOperation(mathematicalSymbol)
+        }
+        if let result = brain.result{
+            displayValue = result
         }
     }
 }
