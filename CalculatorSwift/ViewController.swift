@@ -33,6 +33,7 @@ class ViewController: UIViewController {
     
     var brain: CalculatorBrain = CalculatorBrain()
     
+    @IBOutlet weak var programDisplay: UILabel!
     @IBAction func operationPressed(_ sender: UIButton) {
         if userIsInTheMiddleOfTyping {
             brain.setOperand(displayValue)

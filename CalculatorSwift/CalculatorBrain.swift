@@ -24,6 +24,7 @@ struct CalculatorBrain{
         "e": Operation.constant(M_E),
         "√": Operation.unaryOperations(sqrt),
         "cos": Operation.unaryOperations(cos),
+        "sin": Operation.unaryOperations(sin),
         "×": Operation.binaryOperations({$0 * $1}),
         "÷": Operation.binaryOperations({$0 / $1}),
         "+": Operation.binaryOperations({$0 + $1}),
