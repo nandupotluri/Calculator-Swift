@@ -32,7 +32,7 @@ class ViewController: UIViewController {
             if(digit != ".") {
                 display.text = digit
             } else {
-                display.text = display.text! + digit
+                display.text = "0."
             }
             userIsInTheMiddleOfTyping = true
         }
