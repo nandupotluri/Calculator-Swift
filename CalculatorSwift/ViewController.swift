@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var display: UILabel!
+
+    @IBOutlet weak var programDisplay: UILabel!
     
     var userIsInTheMiddleOfTyping = false
     
@@ -49,7 +51,6 @@ class ViewController: UIViewController {
     
     var brain: CalculatorBrain = CalculatorBrain()
     
-    @IBOutlet weak var programDisplay: UILabel!
     @IBAction func operationPressed(_ sender: UIButton) {
         if userIsInTheMiddleOfTyping {
             brain.setOperand(displayValue)
@@ -58,9 +59,11 @@ class ViewController: UIViewController {
         
         if let mathematicalSymbol = sender.currentTitle {
             brain.performOperation(mathematicalSymbol)
+            programDisplay.text = brain.programTotal?.joined(separator: " ").appending("...")
         }
         if let result = brain.result{
             displayValue = result
+            programDisplay.text = brain.programTotal?.joined(separator: " ").appending("=")
         }
     }
 }
